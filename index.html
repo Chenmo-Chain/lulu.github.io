@@ -177,48 +177,218 @@
 
         // 菜单数据
         const menuItems = [
-                        { id: 1, name: "麻辣小龙虾", price: 0.01, image: "https://img0.baidu.com/it/u=4221058217,2782100769&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=800",description: "独门秘制，招牌好菜，麻辣爽口" },
-            { id: 2, name: "麻辣田螺", price: 0.01, image: "https://t11.baidu.com/it/u=1647545235,2364697937&fm=199&app=68&f=JPEG?w=750&h=551&s=DF04448F44E3BBE1481F143603003068",description: "北方大排档做法+南方麻辣口味，舌尖上的南北" },
-            { id: 3, name: "辣椒炒肉", price: 0.01, image: "https://img2.baidu.com/it/u=1468014896,849722988&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667" ,description: "选用杭椒、螺丝椒与精选猪腿肉爆炒，辣椒存有肉味，肉中带有椒香"},
-{ id: 4, name: "凉菜拼盘", price: 0.01, image: "https://img0.baidu.com/it/u=4263349877,1247569741&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067",description: "北方咸香+南方麻辣的结合，味蕾触电的感觉" },
-{ id: 5, name: "暖胃鸡汤", price: 0.01, image: "https://img2.baidu.com/it/u=3631573169,219701649&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667",description: "采用三黄鸡熬煮，红枣、枸杞、白芷熬制60min，一碗暖一天" },
-{ id: 6, name: "鲫鱼豆腐汤", price: 0.01, image: "https://q0.itc.cn/q_70/images01/20241025/32e7af4214d84f07af0de08f79f85956.jpeg",description: "鲜嫩鲫鱼汤，白玉豆腐和鱼的完美结合，鲜美无比" },
-            { id: 6, name: "玉米排骨汤", price: 0.01, image: "https://img0.baidu.com/it/u=1486134484,2113651327&fm=253&fmt=auto&app=138&f=JPEG?w=534&h=500",description: "一道常见的家常菜，它既能开胃益脾又可润肺养心，经常食用则延年益寿" },
-            { id: 6, name: "三鲜豆腐汤", price: 0.01, image: "https://img0.baidu.com/it/u=450864179,3277173460&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=661",description: "豆腐细嫩，海鲜荚味，再加鸡汤炖制味道醇厚，营养价值高" },
-            { id: 6, name: "紫菜蛋花汤", price: 0.01, image: "https://img2.baidu.com/it/u=3059218655,2705056212&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=891",description: "传统餐后汤，其主料紫菜和鸡蛋的营养价值都比较高，因其制作简单方便，营养丰富而广受喜爱" },
-
-
-{ id: 6, name: "辣子鸡丁", price: 0.01, image: "https://pic.rmb.bdstatic.com/bjh/events/932e576a481c39159b9c9dd185175f45492.jpeg@h_1280",description: "主料采用鸡翅中，咸香酥脆，表面包裹麻椒粉，正宗口味"},
-{ id: 7, name: "辣椒炒蛋", price: 0.01, image: "https://img1.baidu.com/it/u=4195476568,2274927223&fm=253&fmt=auto&app=120&f=JPEG?w=456&h=609",description: "家常菜，选用无菌蛋，口感软嫩齿齿留香"},
-{ id: 8, name: "家常土豆丝", price: 0.01, image: "https://img1.baidu.com/it/u=1240038596,1511291726&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067",description: "猛火爆炒，土豆的香气和锅气结合"},
-{ id: 9, name: "鸡翅鸡爪煲", price: 0.01, image: "https://img0.baidu.com/it/u=4227764996,1479682150&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=653",description: "精选鸡翅中，鸡爪剪断更易入味，酱香微甜可配料汁"},
-{ id: 9, name: "干锅土豆", price: 0.01, image: "https://qcloud.dpfile.com/pc/XUSX80vLrC7RKoDvc0JLnpSn8NKVeoDtqHcNQLaJC6EXyPEkpUqfdIUZwCbbB1Xz.jpg",description: "土豆的经典做法之一，酱香微辣，口感软糯"},
-{ id: 9, name: "油炸小酥肉", price: 0.01, image: "https://p1.meituan.net/biztone/5c9a34e961ff78b99550bc3d4512258f49486.jpg%40watermark%3D0",description: "精选猪后腿肉，外表酥脆，肉不柴不腻，表面包裹麻椒"},
-{ id: 9, name: "炸蘑菇", price: 0.01, image: "https://img1.baidu.com/it/u=2201909768,525296040&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1068",description: "色泽金黄，香脆可口，补益肠胃，滋阴润燥"},
-{ id: 9, name: "清蒸螃蟹(附料汁)", price: 0.01, image: "https://qcloud.dpfile.com/pc/lHRNalJLfvaRqrGMKti1HtOCq0CryN7YAWEZoGleHWoStlc3tb2D46EPS2wRcTFF.jpg",description: "精选鲜活梭子蟹，肉质鲜美，唇齿留香"},
-{ id: 9, name: "清炒小青菜", price: 0.01, image: "https://qcloud.dpfile.com/pc/Kcg4zZvJgN3XRxgmAHkAH-mnVxPDjDqdzNTzmPY6FP2SOsdagRDO-IEWlGb8IfF2.jpg",description: "营养清淡，健康解腻"},
-{ id: 9, name: "白灼虾(附料汁)", price: 0.01, image: "https://img2.baidu.com/it/u=203393167,3756707643&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667",description: "广州人喜欢用白灼之法来做虾，为的是保持其鲜、甜、嫩的原味，然后将虾剥壳蘸酱汁而食"},
-{ id: 9, name: "可乐鸡翅", price: 0.01, image: "https://img2.baidu.com/it/u=3182339460,1791110207&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067",description: "融合中西烹饪元素的经典美食，以鸡肉的鲜嫩与可乐的香甜巧妙结合"},
-{ id: 9, name: "蒜香排骨", price: 0.01, image: "https://img0.baidu.com/it/u=2087816616,900034016&fm=253&fmt=auto&app=120&f=JPEG?w=800&h=1067",description: "上海菜，口感蒜香浓郁，质嫩味美，具有贫血调理，月经不调调理，健脾开胃调理的功效"},
-{ id: 9, name: "麻婆豆腐", price: 0.01, image: "https://img0.baidu.com/it/u=3524466427,1125404094&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=662",description: "经典川菜，始于清朝，此菜成菜麻、辣、鲜、香、烫、整、嫩、酥，突出川菜麻辣味型的特点"},
-
-
-            
-{ id: 99, name: "主食1", price: 0.01, image: "https://qcloud.dpfile.com/pc/9F9l0BNqqiloRc36PpgaBW1ObNjAj15IGdu5qYqLrg-XTyzltWS0cMQz64oljHcX.jpg" ,description: "经典北方发酵大馒头"},
-{ id: 100, name: "主食2", price: 0.01, image: "https://img1.baidu.com/it/u=505587759,3774476662&fm=253&fmt=auto&app=120&f=JPEG?w=667&h=500",description: "泰国茉莉香米，粒粒清香，柴火饭煮制" },
-{ id: 101, name: "主食3", price: 0.01, image: "https://img1.baidu.com/it/u=241195059,3034278963&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" ,description: "经典烤肠热狗包，饱腹感最佳"},
-{ id: 102, name: "秘制料汁(微麻微辣)", price: 0.01, image: "https://img0.baidu.com/it/u=2808760891,2949840789&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=597",description: "百搭湿料，蘸肉最佳，南方经典口味"},
-
-
-{ id: 150, name: "加麻加辣", price: 0.01, image: "https://img2.baidu.com/it/u=1158213649,1583505634&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067",description: "默认选择的所有菜品都加,定制化请口头告知"},
-
-{ id: 199, name: "碧蓝海岸(3~10°)", price: 0.01, image: "https://qcloud.dpfile.com/pc/sXAnHyI8GPO0m3IaY5QRy49rFFX4C5_OFIJTaiy1hoM682Xy-QXSwkg_hthQB95D.jpg",description: "伏特加、蓝橙加上蝶豆花茶，口感清甜，微醺必备（调酒师Mr.Chen）"},
-
-
-{ id: 399, name: "捞汁海鲜大餐", price: 0.01, image: "https://qcloud.dpfile.com/pc/AELScwtB3tixAutBsAC_gv-T-Er6j0xfVvdrxxxTan0mJZKv5yUH3kpNboE6ElBn.jpg",description: "食材现采，保证新鲜，酸辣微甜，制作需等待2-3小时哦"},
-{ id: 400, name: "多拼烤肉大餐", price: 0.01, image: "https://img2.baidu.com/it/u=2768194859,2743648225&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667",description: "精选牛肉，羊排，黑猪腿，羊排煎出奶香，猪五花煎至酥皮，制作需等待2-3小时哦"},
-
+            {
+                id: 1,
+                name: "麻辣小龙虾",
+                price: 0.01,
+                image: "https://img0.baidu.com/it/u=4221058217,2782100769&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=800",
+                description: "独门秘制，招牌好菜，麻辣爽口"
+            },
+            {
+                id: 2,
+                name: "麻辣田螺",
+                price: 0.01,
+                image: "https://t11.baidu.com/it/u=1647545235,2364697937&fm=199&app=68&f=JPEG?w=750&h=551&s=DF04448F44E3BBE1481F143603003068",
+                description: "北方大排档做法+南方麻辣口味，舌尖上的南北"
+            },
+            {
+                id: 3,
+                name: "辣椒炒肉",
+                price: 0.01,
+                image: "https://img2.baidu.com/it/u=1468014896,849722988&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667",
+                description: "选用杭椒、螺丝椒与精选猪腿肉爆炒，辣椒存有肉味，肉中带有椒香"
+            },
+            {
+                id: 4,
+                name: "凉菜拼盘",
+                price: 0.01,
+                image: "https://img0.baidu.com/it/u=4263349877,1247569741&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067",
+                description: "北方咸香+南方麻辣的结合，味蕾触电的感觉"
+            },
+            {
+                id: 5,
+                name: "暖胃鸡汤",
+                price: 0.01,
+                image: "https://img2.baidu.com/it/u=3631573169,219701649&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667",
+                description: "采用三黄鸡熬煮，红枣、枸杞、白芷熬制60min，一碗暖一天"
+            },
+            {
+                id: 6,
+                name: "鲫鱼豆腐汤",
+                price: 0.01,
+                image: "https://q0.itc.cn/q_70/images01/20241025/32e7af4214d84f07af0de08f79f85956.jpeg",
+                description: "鲜嫩鲫鱼汤，白玉豆腐和鱼的完美结合，鲜美无比"
+            },
+            {
+                id: 7,
+                name: "玉米排骨汤",
+                price: 0.01,
+                image: "https://img0.baidu.com/it/u=1486134484,2113651327&fm=253&fmt=auto&app=138&f=JPEG?w=534&h=500",
+                description: "一道常见的家常菜，它既能开胃益脾又可润肺养心，经常食用则延年益寿"
+            },
+            {
+                id: 8,
+                name: "三鲜豆腐汤",
+                price: 0.01,
+                image: "https://img0.baidu.com/it/u=450864179,3277173460&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=661",
+                description: "豆腐细嫩，海鲜荚味，再加鸡汤炖制味道醇厚，营养价值高"
+            },
+            {
+                id: 9,
+                name: "紫菜蛋花汤",
+                price: 0.01,
+                image: "https://img2.baidu.com/it/u=3059218655,2705056212&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=891",
+                description: "传统餐后汤，其主料紫菜和鸡蛋的营养价值都比较高，因其制作简单方便，营养丰富而广受喜爱"
+            },
+            {
+                id: 10,
+                name: "辣子鸡丁",
+                price: 0.01,
+                image: "https://pic.rmb.bdstatic.com/bjh/events/932e576a481c39159b9c9dd185175f45492.jpeg@h_1280",
+                description: "主料采用鸡翅中，咸香酥脆，表面包裹麻椒粉，正宗口味"
+            },
+            {
+                id: 11,
+                name: "辣椒炒蛋",
+                price: 0.01,
+                image: "https://img1.baidu.com/it/u=4195476568,2274927223&fm=253&fmt=auto&app=120&f=JPEG?w=456&h=609",
+                description: "家常菜，选用无菌蛋，口感软嫩齿齿留香"
+            },
+            {
+                id: 12,
+                name: "家常土豆丝",
+                price: 0.01,
+                image: "https://img1.baidu.com/it/u=1240038596,1511291726&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067",
+                description: "猛火爆炒，土豆的香气和锅气结合"
+            },
+            {
+                id: 13,
+                name: "鸡翅鸡爪煲",
+                price: 0.01,
+                image: "https://img0.baidu.com/it/u=4227764996,1479682150&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=653",
+                description: "精选鸡翅中，鸡爪剪断更易入味，酱香微甜可配料汁"
+            },
+            {
+                id: 14,
+                name: "干锅土豆",
+                price: 0.01,
+                image: "https://qcloud.dpfile.com/pc/XUSX80vLrC7RKoDvc0JLnpSn8NKVeoDtqHcNQLaJC6EXyPEkpUqfdIUZwCbbB1Xz.jpg",
+                description: "土豆的经典做法之一，酱香微辣，口感软糯"
+            },
+            {
+                id: 15,
+                name: "油炸小酥肉",
+                price: 0.01,
+                image: "https://p1.meituan.net/biztone/5c9a34e961ff78b99550bc3d4512258f49486.jpg%40watermark%3D0",
+                description: "精选猪后腿肉，外表酥脆，肉不柴不腻，表面包裹麻椒"
+            },
+            {
+                id: 16,
+                name: "炸蘑菇",
+                price: 0.01,
+                image: "https://img1.baidu.com/it/u=2201909768,525296040&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1068",
+                description: "色泽金黄，香脆可口，补益肠胃，滋阴润燥"
+            },
+            {
+                id: 17,
+                name: "清蒸螃蟹(附料汁)",
+                price: 0.01,
+                image: "https://qcloud.dpfile.com/pc/lHRNalJLfvaRqrGMKti1HtOCq0CryN7YAWEZoGleHWoStlc3tb2D46EPS2wRcTFF.jpg",
+                description: "精选鲜活梭子蟹，肉质鲜美，唇齿留香"
+            },
+            {
+                id: 18,
+                name: "清炒小青菜",
+                price: 0.01,
+                image: "https://qcloud.dpfile.com/pc/Kcg4zZvJgN3XRxgmAHkAH-mnVxPDjDqdzNTzmPY6FP2SOsdagRDO-IEWlGb8IfF2.jpg",
+                description: "营养清淡，健康解腻"
+            },
+            {
+                id: 19,
+                name: "白灼虾(附料汁)",
+                price: 0.01,
+                image: "https://img2.baidu.com/it/u=203393167,3756707643&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667",
+                description: "广州人喜欢用白灼之法来做虾，为的是保持其鲜、甜、嫩的原味，然后将虾剥壳蘸酱汁而食"
+            },
+            {
+                id: 20,
+                name: "可乐鸡翅",
+                price: 0.01,
+                image: "https://img2.baidu.com/it/u=3182339460,1791110207&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067",
+                description: "融合中西烹饪元素的经典美食，以鸡肉的鲜嫩与可乐的香甜巧妙结合"
+            },
+            {
+                id: 21,
+                name: "蒜香排骨",
+                price: 0.01,
+                image: "https://img0.baidu.com/it/u=2087816616,900034016&fm=253&fmt=auto&app=120&f=JPEG?w=800&h=1067",
+                description: "上海菜，口感蒜香浓郁，质嫩味美，具有贫血调理，月经不调调理，健脾开胃调理的功效"
+            },
+            {
+                id: 22,
+                name: "麻婆豆腐",
+                price: 0.01,
+                image: "https://img0.baidu.com/it/u=3524466427,1125404094&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=662",
+                description: "经典川菜，始于清朝，此菜成菜麻、辣、鲜、香、烫、整、嫩、酥，突出川菜麻辣味型的特点"
+            },
+            {
+                id: 23,
+                name: "主食1",
+                price: 0.01,
+                image: "https://qcloud.dpfile.com/pc/9F9l0BNqqiloRc36PpgaBW1ObNjAj15IGdu5qYqLrg-XTyzltWS0cMQz64oljHcX.jpg",
+                description: "经典北方发酵大馒头"
+            },
+            {
+                id: 24,
+                name: "主食2",
+                price: 0.01,
+                image: "https://img1.baidu.com/it/u=505587759,3774476662&fm=253&fmt=auto&app=120&f=JPEG?w=667&h=500",
+                description: "泰国茉莉香米，粒粒清香，柴火饭煮制"
+            },
+            {
+                id: 25,
+                name: "主食3",
+                price: 0.01,
+                image: "https://img1.baidu.com/it/u=241195059,3034278963&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+                description: "经典烤肠热狗包，饱腹感最佳"
+            },
+            {
+                id: 26,
+                name: "秘制料汁(微麻微辣)",
+                price: 0.01,
+                image: "https://img0.baidu.com/it/u=2808760891,2949840789&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=597",
+                description: "百搭湿料，蘸肉最佳，南方经典口味"
+            },
+            {
+                id: 27,
+                name: "加麻加辣",
+                price: 0.01,
+                image: "https://img2.baidu.com/it/u=1158213649,1583505634&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067",
+                description: "默认选择的所有菜品都加,定制化请口头告知"
+            },
+            {
+                id: 28,
+                name: "碧蓝海岸(3~10°)",
+                price: 0.01,
+                image: "https://qcloud.dpfile.com/pc/sXAnHyI8GPO0m3IaY5QRy49rFFX4C5_OFIJTaiy1hoM682Xy-QXSwkg_hthQB95D.jpg",
+                description: "伏特加、蓝橙加上蝶豆花茶，口感清甜，微醺必备（调酒师Mr.Chen）"
+            },
+            {
+                id: 29,
+                name: "捞汁海鲜大餐",
+                price: 0.01,
+                image: "https://qcloud.dpfile.com/pc/AELScwtB3tixAutBsAC_gv-T-Er6j0xfVvdrxxxTan0mJZKv5yUH3kpNboE6ElBn.jpg",
+                description: "食材现采，保证新鲜，酸辣微甜，制作需等待2-3小时哦"
+            },
+            {
+                id: 30,
+                name: "多拼烤肉大餐",
+                price: 0.01,
+                image: "https://img2.baidu.com/it/u=2768194859,2743648225&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667",
+                description: "精选牛肉，羊排，黑猪腿，羊排煎出奶香，猪五花煎至酥皮，制作需等待2-3小时哦"
+            }
         ];
+
 
         // 购物车数据
         let cart = [];
