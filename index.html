@@ -6,9 +6,8 @@
     <title>ChenLulu的食谱</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-
-    <style>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+     <style>
         body {
             font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
             background-color: #f8f9fa;
@@ -49,6 +48,24 @@
             color: #e74c3c;
             font-weight: bold;
         }
+        /* 添加按钮动画效果 */
+@keyframes buttonPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.btn-primary.added {
+    animation: buttonPulse 0.5s ease;
+    background-color: #2ecc71; /* 添加成功后变为绿色 */
+    border-color: #2ecc71;
+}
+
+.btn-primary.added::after {
+    content: "✓";
+    margin-left: 5px;
+}
+
         .cart {
             position: fixed;
             right: 20px;
@@ -116,6 +133,17 @@
             background-color: #c0392b;
             border-color: #c0392b;
         }
+        /* 购物车图标跳动动画 */
+@keyframes cartBounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+.cart-bounce {
+    animation: cartBounce 0.5s ease;
+}
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -257,14 +285,11 @@
         </div>
     </div>
 
-
-
-<div class="cart-container">
-
-<button id="cart-toggle" class="cart-toggle">
-    <i class="ri-shopping-cart-2-line"></i>
-    <span id="cart-count">0</span>
-</button>
+    <div class="cart-container">
+        <button id="cart-toggle" class="cart-toggle">
+            <i class="ri-shopping-cart-2-line"></i>
+            <span id="cart-count">0</span>
+        </button>
 
         <div class="cart">
             <h3>餐车</h3>
@@ -279,7 +304,7 @@
         // 初始化 EmailJS
         emailjs.init("GBUZcp73dqoBY8D4B");
 
-        // 菜单数据
+        // 菜单数据（保持不变）
         const menuItems = [
             {
                 id: 1,
@@ -557,7 +582,6 @@
             
         ];
 
-
         // 购物车数据
         let cart = [];
         let totalPrice = 0;
@@ -567,8 +591,10 @@
             const savedCart = localStorage.getItem("cart");
             if (savedCart) {
                 cart = JSON.parse(savedCart);
-                totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+                // 重新计算总价
+                totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
                 updateCart();
+                updateCartCount();
             }
         }
 
@@ -606,27 +632,68 @@
             });
         }
 
-         document.getElementById("cart-toggle").addEventListener("click", function () {
+        // 购物车切换显示
+        document.getElementById("cart-toggle").addEventListener("click", function () {
             const cart = document.querySelector(".cart");
             cart.classList.toggle("active");
         });
 
+        // 更新购物车数量显示
         function updateCartCount() {
             const cartCount = document.getElementById("cart-count");
-            cartCount.textContent = cart.length;
+            // 计算购物车中所有菜品的总数量
+            const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalQuantity;
+            
+            // 添加购物车图标动画
+            const cartIcon = document.querySelector(".cart-toggle i");
+            cartIcon.classList.add("cart-bounce");
+            setTimeout(() => {
+                cartIcon.classList.remove("cart-bounce");
+            }, 500);
         }
 
+        // 添加菜品到购物车
         function addToCart(itemId) {
             const item = menuItems.find(i => i.id === itemId);
             if (item) {
-                cart.push(item);
+                // 查找购物车中是否已有该菜品
+                const existingItem = cart.find(i => i.id === itemId);
+                if (existingItem) {
+                    // 如果存在，增加数量
+                    existingItem.quantity += 1;
+                } else {
+                    // 如果不存在，添加新条目
+                    cart.push({ 
+                        id: item.id, 
+                        name: item.name, 
+                        price: item.price, 
+                        quantity: 1 
+                    });
+                }
+                // 更新总价
                 totalPrice += item.price;
+                // 更新购物车显示
                 updateCart();
                 updateCartCount();
+                // 保存购物车数据
                 saveCart();
+                
+                // 获取被点击的按钮
+                const buttons = document.querySelectorAll(`.btn-primary[onclick="addToCart(${itemId})"]`);
+                buttons.forEach(button => {
+                    // 添加动画类
+                    button.classList.add('added');
+                    
+                    // 动画结束后移除类
+                    setTimeout(() => {
+                        button.classList.remove('added');
+                    }, 1000);
+                });
             }
         }
 
+        // 清空购物车
         function clearCart() {
             cart = [];
             totalPrice = 0;
@@ -635,27 +702,27 @@
             saveCart();
         }
 
-        // 更新购物车
+        // 更新购物车显示
         function updateCart() {
             const cartItems = document.getElementById("cart-items");
             const totalPriceElement = document.getElementById("total-price");
             cartItems.innerHTML = "";
+            // 遍历购物车，显示每个菜品的信息
             cart.forEach(item => {
                 const li = document.createElement("li");
-                li.textContent = `${item.name} - ¥${item.price.toFixed(2)}`;
+                li.textContent = `${item.name} x ${item.quantity} - ¥${(item.price * item.quantity).toFixed(2)}`;
                 cartItems.appendChild(li);
             });
+            // 更新总价显示
             totalPriceElement.textContent = totalPrice.toFixed(2);
         }
 
         // 发送邮件
-        function sendEmail(cartItems, totalPrice) {
+        function sendEmail(orderDetails, totalPrice) {
             showLoading();
             const templateParams = {
                 to_email: "1135239005@qq.com",
-                message: `订单详情：\n${cartItems
-                    .map((item) => `${item.name} - ¥${item.price.toFixed(2)}`)
-                    .join("\n")}\n
+                message: `订单详情：\n${orderDetails}\n
 总价: ¥${totalPrice.toFixed(2)}`,
             };
 
@@ -679,10 +746,13 @@
                 alert("记得选菜哦");
                 return;
             }
-            sendEmail(cart, totalPrice);
+            // 生成订单详情
+            const orderDetails = cart.map(item => 
+                `${item.name} x ${item.quantity} - ¥${(item.price * item.quantity).toFixed(2)}`
+            ).join("\n");
+            sendEmail(orderDetails, totalPrice);
             clearCart();
         }
-
 
         // 页面加载时初始化
         window.onload = () => {
