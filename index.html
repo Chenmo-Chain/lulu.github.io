@@ -28,7 +28,7 @@
         }
         .menu-item img {
             width: 100%; /* 保持宽度占满容器 */
-            height: 150px; /* 固定高度 */
+            height: 110px; /* 固定高度 */
             object-fit: cover; /* 保持宽高比，裁剪多余部分 */
             border-radius: 8px;
         }
@@ -128,13 +128,67 @@
             .menu-item {
                 margin-bottom: 15px;
             }
-            .cart {
+             .cart {
+                width: calc(100% - 40px);
+                max-width: none;
                 right: 10px;
-                bottom: 10px;
-                width: calc(100% - 20px); /* 移动端宽度接近屏幕宽度 */
-                max-width: none; /* 取消最大宽度限制 */
-                max-height: 50vh; /* 移动端高度更小 */
             }
+        }
+.cart-container {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+        }
+        .cart-toggle {
+            background-color: #3498db;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .cart-toggle:hover {
+            background-color: #2980b9;
+        }
+        #cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #e74c3c;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+        }
+        .cart {
+            width: 300px;
+            background-color: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-height: 60vh;
+            overflow-y: auto;
+            position: absolute;
+            right: 0;
+            bottom: 60px;
+            transform: translateY(100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .cart.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
         }
         .loading-overlay {
             position: fixed;
@@ -165,13 +219,18 @@
         </div>
     </div>
 
-    <!-- 购物车 -->
-    <div class="cart">
-        <h3>餐车</h3>
-        <ul id="cart-items"></ul>
-        <p class="total-price">总价: ¥<span id="total-price">0.00</span></p>
-        <button class="btn btn-success" onclick="checkout()">提交</button>
-        <button class="btn btn-danger" onclick="clearCart()">清空</button>
+<div class="cart-container">
+        <button id="cart-toggle" class="cart-toggle">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+        </button>
+        <div class="cart">
+            <h3>餐车</h3>
+            <ul id="cart-items"></ul>
+            <p class="total-price">总价: ¥<span id="total-price">0.00</span></p>
+            <button class="btn btn-success" onclick="checkout()">提交</button>
+            <button class="btn btn-danger" onclick="clearCart()">清空</button>
+        </div>
     </div>
 
     <script>
@@ -441,15 +500,33 @@
             });
         }
 
-        // 加入购物车
+         document.getElementById("cart-toggle").addEventListener("click", function () {
+            const cart = document.querySelector(".cart");
+            cart.classList.toggle("active");
+        });
+
+        function updateCartCount() {
+            const cartCount = document.getElementById("cart-count");
+            cartCount.textContent = cart.length;
+        }
+
         function addToCart(itemId) {
             const item = menuItems.find(i => i.id === itemId);
             if (item) {
                 cart.push(item);
                 totalPrice += item.price;
                 updateCart();
+                updateCartCount();
                 saveCart();
             }
+        }
+
+        function clearCart() {
+            cart = [];
+            totalPrice = 0;
+            updateCart();
+            updateCartCount();
+            saveCart();
         }
 
         // 更新购物车
@@ -500,13 +577,6 @@
             clearCart();
         }
 
-        // 清空购物车
-        function clearCart() {
-            cart = [];
-            totalPrice = 0;
-            updateCart();
-            saveCart();
-        }
 
         // 页面加载时初始化
         window.onload = () => {
