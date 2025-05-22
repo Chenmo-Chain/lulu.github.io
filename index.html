@@ -27,9 +27,9 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         .menu-item img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
+            width: 100%; /* 保持宽度占满容器 */
+            height: 150px; /* 固定高度 */
+            object-fit: cover; /* 保持宽高比，裁剪多余部分 */
             border-radius: 8px;
         }
         .menu-item h4 {
@@ -59,6 +59,8 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            max-height: 60vh; /* 限制最大高度为屏幕的60% */
+            overflow-y: auto; /* 内容超出时滚动 */
         }
         .cart h3 {
             font-size: 18px;
@@ -69,8 +71,8 @@
             list-style: none;
             padding: 0;
             margin: 0;
-            max-height: 200px;
-            overflow-y: auto;
+            max-height: 200px; /* 限制列表高度 */
+            overflow-y: auto; /* 内容超出时滚动 */
         }
         .cart ul li {
             font-size: 14px;
@@ -129,8 +131,9 @@
             .cart {
                 right: 10px;
                 bottom: 10px;
-                width: calc(100% - 20px);
-                max-width: none;
+                width: calc(100% - 20px); /* 移动端宽度接近屏幕宽度 */
+                max-width: none; /* 取消最大宽度限制 */
+                max-height: 50vh; /* 移动端高度更小 */
             }
         }
         .loading-overlay {
