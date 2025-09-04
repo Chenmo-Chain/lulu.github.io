@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChenLulu的食谱</title>
+    <title>LuLu的专属食谱</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
@@ -13,6 +13,150 @@
             background-color: #f8f9fa;
             padding-bottom: 60px; /* 为购物车留出空间 */
         }
+         /* 钻石会员标题样式 */
+        .diamond-header {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+            padding: 1.5rem 0;
+        }
+        
+        .diamond-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff6b6b, #ffa86b, #ffdb6b, #6bff9e, #6bc7ff, #9d6bff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 8s ease infinite, glow 3s ease-in-out infinite alternate;
+            position: relative;
+            display: inline-block;
+            padding: 0 1rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        
+        .diamond-title::before, .diamond-title::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+            transform: translateY(-50%);
+        }
+        
+        .diamond-title::before {
+            left: -60px;
+        }
+        
+        .diamond-title::after {
+            right: -60px;
+        }
+        
+        .diamond-badge {
+            position: absolute;
+            top: -10px;
+            right: 20%;
+            background: linear-gradient(145deg, #ffd700, #ffaa00);
+            color: #000;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            transform: rotate(5deg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            opacity: 0;
+            animation: sparkle 3s linear infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 215, 0, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(5deg); }
+            50% { transform: translateY(-8px) rotate(5deg); }
+        }
+        
+        @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0) translateY(0) rotate(0deg); }
+            10% { opacity: 1; transform: scale(1) translateY(-20px) rotate(90deg); }
+            30% { opacity: 0.8; }
+            100% { opacity: 0; transform: scale(0.5) translateY(-40px) rotate(180deg); }
+        }
+          /* 响应式调整 */
+        @media (max-width: 768px) {
+            .diamond-title {
+                font-size: 2rem;
+                padding: 0 0.5rem;
+            }
+            
+            .diamond-title::before, .diamond-title::after {
+                width: 30px;
+            }
+            
+            .diamond-title::before {
+                left: -40px;
+            }
+            
+            .diamond-title::after {
+                right: -40px;
+            }
+            
+            .diamond-badge {
+                top: -5px;
+                right: 10%;
+                font-size: 0.6rem;
+                padding: 0.2rem 0.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .diamond-title {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+            }
+            
+            .diamond-title::before, .diamond-title::after {
+                width: 20px;
+            }
+            
+            .diamond-title::before {
+                left: -30px;
+            }
+            
+            .diamond-title::after {
+                right: -30px;
+            }
+            
+            .diamond-badge {
+                top: -8px;
+                right: 5%;
+                font-size: 0.5rem;
+                padding: 0.1rem 0.4rem;
+            }
+        }
+
         .menu-item {
             margin-bottom: 20px;
             border: 1px solid #ddd;
@@ -321,8 +465,18 @@
         </div>
     </div>
 
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">CLLの食谱</h1>
+    <div class="container mt-4">
+        <!-- 钻石会员标题 -->
+        <div class="diamond-header">
+            <div class="diamond-badge">L L</div>
+            <h1 class="diamond-title">LULU专属食谱</h1>
+            <!-- 动态闪烁效果元素 -->
+            <div class="sparkle" style="top: 20%; left: 20%; animation-delay: 0.5s;"></div>
+            <div class="sparkle" style="top: 60%; left: 80%; animation-delay: 1.5s;"></div>
+            <div class="sparkle" style="top: 30%; left: 60%; animation-delay: 2.5s;"></div>
+            <div class="sparkle" style="top: 70%; left: 30%; animation-delay: 3.5s;"></div>
+        </div>
+        
         <div class="row" id="menu">
             <!-- 菜单项动态插入 -->
         </div>
@@ -648,7 +802,7 @@
                 name: "加麻加辣",
                 price: 0.01,
                 image: "https://img2.baidu.com/it/u=1158213649,1583505634&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1067",
-                description: "默认选择的所有菜品都加,定制化请口头告知"
+                description: "默认选择的所有菜品都加,定制化请备注"
             },
             {
                 id: 28,
@@ -656,6 +810,20 @@
                 price: 0.01,
                 image: "https://qcloud.dpfile.com/pc/sXAnHyI8GPO0m3IaY5QRy49rFFX4C5_OFIJTaiy1hoM682Xy-QXSwkg_hthQB95D.jpg",
                 description: "伏特加、蓝橙加上蝶豆花茶，口感清甜，微醺必备（调酒师Mr.Chen）"
+            },
+            {
+                id: 991,
+                name: "银阙(3~8°)",
+                price: 20.20,
+                image: "https://qcloud.dpfile.com/pc/fjClVsLcWDUiJ16Q3t1_kX0XWdfP9M7g16Q6_-SSfxiF_k8yvTG1IwzHdyVd9zu-.jpg",
+                description: "通往月宫的门钥，便藏于这杯银辉之中。是桂花的香，是寒露的凉，是饮下一口便坠入云霄的微醺。（调酒师Mr.Chen）"
+            },
+            {
+                id: 992,
+                name: "晚风与鸢尾(6~10°)",
+                price: 20.25,
+                image: "https://t8.baidu.com/it/u=2121581617,2754807703&fm=193",
+                description: "夕阳的余晖为花瓣镀上金边，晚风轻抚，带来一天中最温柔的时刻,愿这杯酒里有你看日落时的心情。（调酒师Mr.Chen）"
             },
             {
                 id: 29,
@@ -853,15 +1021,30 @@
             clearCart();
         }
 
+        // 创建闪烁效果
+        function createSparkles() {
+            const header = document.querySelector('.diamond-header');
+            for (let i = 0; i < 6; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 4 + 's';
+                header.appendChild(sparkle);
+            }
+        }
+        
         // 页面加载时初始化
         window.onload = () => {
             showLoading();
             loadCart();
             initMenu();
-            setTimeout(() => hideLoading(), 500); // 模拟加载延迟
+            createSparkles(); // 添加闪烁效果
+            setTimeout(() => hideLoading(), 500);
         };
     </script>
 </body>
 </html>
+
 
 
